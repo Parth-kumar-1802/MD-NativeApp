@@ -18,12 +18,6 @@ export default function App(props) {
   const {landscape} = useDeviceOrientation();
 
   const Stack = createNativeStackNavigator();
-
-  const placementor = "https://placementor-iit-dhanbad.onrender.com/";
-  const twitter = "https://twitter-mukul202.vercel.app/";
-  const youtube = "https://www.youtube.com/@MailerDaemonIITISMDhanbad";
-  const md = "https://mailer-daemon.vercel.app/";
-  var currentLink = md;
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
