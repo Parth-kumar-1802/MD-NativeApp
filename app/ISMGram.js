@@ -24,25 +24,26 @@ function Ismgram({ navigation}) {
         </SafeAreaView>
         <SafeAreaView style={styles.navig}>
           <TouchableNativeFeedback onPress={() => {
-            console.log("country roads");
+            //console.log("country roads");
             navigation.navigate('Home');
           }}>
             <Text>ISM</Text>
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
-            console.log("Placements");
+            //console.log("Placements");
             navigation.navigate('Placementor');
           }}>
             <Text>Placementor</Text>
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
-            console.log("socials media addict");
+            //console.log("socials media addict");
             navigation.navigate('Ismgram');
           }}>
             <Text>ISMGram</Text>
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
-            console.log("DSW ka number");
+            //console.log("DSW ka number");
+            navigation.navigate('Menu');
           }}>
             <Text>Others</Text>
           </TouchableNativeFeedback>

@@ -1,26 +1,50 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNativeFeedback} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 import { TouchableHighlight } from 'react-native-gesture-handler';
+import client from '../sanity';
 
-function Home({navigation}) { 
-  console.log(useDimensions());
-  console.log(useDeviceOrientation());
-  const {landscape} = useDeviceOrientation();
+import ContactCard from './components/contactCard';
 
-  const placementor = "https://placementor-iit-dhanbad.onrender.com/";
-  const twitter = "https://twitter-mukul202.vercel.app/";
-  const youtube = "https://www.youtube.com/@MailerDaemonIITISMDhanbad";
-  const md = "https://mailer-daemon.vercel.app/";
-  var currentLink = md;
+function Menu({navigation}) {
+    const [impContacts, setImpContacts] = useState([]);
+
+    useEffect(()=>{
+        const query = `*[_type == "contacts"]{...}`
+        client.fetch(query).then(data =>{
+            setImpContacts(data);
+        })
+    }, []);
+    console.log(impContacts);
+
+    //console.log(useDimensions());
+    //console.log(useDeviceOrientation());
+    const {landscape} = useDeviceOrientation();
+
+    const placementor = "https://placementor-iit-dhanbad.onrender.com/";
+    const twitter = "https://twitter-mukul202.vercel.app/";
+    const youtube = "https://www.youtube.com/@MailerDaemonIITISMDhanbad";
+    const md = "https://mailer-daemon.vercel.app/";
+    var currentLink = youtube;
   return (
     <SafeAreaView style={styles.container}>
       <SafeAreaView style={{width:'100%', height:'93%'}}>
-        <WebView
-          source={{uri : currentLink}}
-        />
+        {impContacts?.map(contact => {
+            return(
+            <ContactCard
+                key={contact._id}
+                id={contact._id}
+                imgUrl={
+                    contact.image
+                }
+                name={contact.name}
+                position={contact.position}
+                mail={contact.mail}
+                number={contact.number}
+            />)
+        })}
       </SafeAreaView>
       <SafeAreaView style={styles.navig}>
         <TouchableNativeFeedback onPress={() => {
@@ -70,4 +94,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default Menu;
