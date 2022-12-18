@@ -7,6 +7,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import Home from './app/Home';
 import Placementor from './app/Placementor';
 import Ismgram from './app/ISMGram';
+import Menu from './app/menu';
 
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -24,6 +25,7 @@ export default function App(props) {
         <Stack.Screen name="Home" component={Home} options={{headerShown: false}} />
         <Stack.Screen name="Placementor" component={Placementor} options={{headerShown: false}} />
         <Stack.Screen name="Ismgram" component={Ismgram} options={{headerShown: false}} />
+        <Stack.Screen name="Menu" component={Menu} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );
