@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNative
 import React from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+// import { TouchableHighlight } from 'react-native-gesture-handler';
 
 function Home({navigation}) { 
   console.log(useDimensions());
