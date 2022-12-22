@@ -6,7 +6,7 @@ import { useDimensions, useDeviceOrientation } from '@react-native-community/hoo
 import { TouchableHighlight } from 'react-native-gesture-handler';
 
 function Ismgram({ navigation}) {
-  console.log(useDimensions());
+  //console.log(useDimensions());
   console.log(useDeviceOrientation());
   const {landscape} = useDeviceOrientation();
 
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent:"space-evenly",
     alignItems:"center",
+    backgroundColor: "gray",
   }
 });
 

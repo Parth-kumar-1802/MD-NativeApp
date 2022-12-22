@@ -23,7 +23,7 @@ const ContactCard = ({
                 source={{
                 uri: urlFor(imgUrl).url(),
                 }}
-                style={{height:100, width:100}}
+                className="h-36 w-64 rounded-lg"
             />
             <SafeAreaView>
                 <Text>{name}</Text>
