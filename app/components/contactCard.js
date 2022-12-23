@@ -23,10 +23,10 @@ const ContactCard = ({
             <View style={{flexDirection: 'row'}}>
             <View style={Styles.cardContainer}>
             <Image
-                // source={{
-                // uri: urlFor(imgUrl).url(),
-                // }}
-                source={require('../assets/profile.jpeg')}
+                source={{
+                uri: urlFor(imgUrl).url(),
+                }}
+               // source={require('../assets/profile.jpeg')}
                 className="h-36 w-64 rounded-lg"
                 style ={Styles.imageStyle}
             />
