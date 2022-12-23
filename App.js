@@ -7,7 +7,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import Home from './app/screens/Home';
 import Placementor from './app/screens/Placementor';
 import Ismgram from './app/screens/ISMGram';
-import Menu from './app/screens/menu';
+import Menu from './app/screens/menu'
 import Contacts from './app/screens/contacts';
 
 import { NavigationContainer, StackActions } from '@react-navigation/native';
