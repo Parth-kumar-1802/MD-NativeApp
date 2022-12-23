@@ -4,10 +4,10 @@ import React, {useEffect, useState} from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import client from '../sanity';
+import client from '../../sanity';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import ContactCard from './components/contactCard';
+import ContactCard from '../components/contactCard';
 
 function Menu({navigation}) {
     const [impContacts, setImpContacts] = useState([]);
@@ -31,6 +31,39 @@ function Menu({navigation}) {
     var currentLink = youtube;
   return (
     <SafeAreaView style={styles.container}>
+
+{/*||||||||||||||||||||||||||||||||||||||||MAP OF IIT ISM||||||||||||||||||||||||||||||||||||||||||||| */}
+
+
+{/* <SafeAreaView style={{
+      //alignSelf: "left"
+  }}>
+  <MapView
+    initialRegion={{
+    longitude: 86.4412,
+    latitude: 23.8183,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+    }}
+    zoomEnabled={true}
+    style={{width: Dimensions.window.width, height: Dimensions.window.height}}
+    mapType="mutedStandard"
+  >
+    <Marker
+        coordinate={{
+        longitude: 86.4412,
+        latitude: 23.8143,
+        }}
+        identifier="origin"
+        pinColor="red"
+    />
+  </MapView>
+</SafeAreaView> */}
+
+
+{/*|||||||||||||||||||||||||||||||||||||||| END OF MAP OF IIT ISM||||||||||||||||||||||||||||||||||||||||||||| */}
+
+
       <ScrollView style={{width:'95%', marginTop:10}}>
       <SafeAreaView style={{width:'100%', height:'93%'}}>
       <TouchableNativeFeedback onPress={() => {
@@ -91,7 +124,16 @@ function Menu({navigation}) {
        </ScrollView>
       <ScrollView style={{width:'95%', marginTop:10}}>
       <SafeAreaView style={{width:'100%', height:'93%'}}>
-         {impContacts?.map(contact => {
+        <SafeAreaView style={styles.contactSection}>
+          <Text>Important contacts</Text>
+          <SafeAreaView style = {styles.button}>
+            <Button
+              title="See All"
+              onPress={() => navigation.navigate('Contacts')}
+            />
+          </SafeAreaView>
+        </SafeAreaView>
+          {impContacts?.map(contact => {
              return(
              <ContactCard
                  key={contact._id}
@@ -198,7 +240,14 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     borderColor: '#fff',
 
-  }
+  },
+  contactSection:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    //padding: '2rem'
+  },
+  button: {
+    width:'20%',
+  },
 });
-
 export default Menu;

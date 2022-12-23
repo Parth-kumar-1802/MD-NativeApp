@@ -9,8 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const ContactCard = ({
-    key,
-    id,
+    // key,
+    // id,
     imgUrl,
     name,
     position,
@@ -26,9 +26,11 @@ const ContactCard = ({
                 source={{
                 uri: urlFor(imgUrl).url(),
                 }}
-               // source={require('../assets/profile.jpeg')}
+
+              
                 className="h-36 w-64 rounded-lg"
                 style ={Styles.imageStyle}
+
             />
             <View style={{alignItems:'center', marginTop:-20, marginBottom: 15}}>
                 <Text style={{fontSize:18, fontWeight: '600'}}>{name}</Text>

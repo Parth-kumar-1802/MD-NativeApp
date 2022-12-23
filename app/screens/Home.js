@@ -3,10 +3,12 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNative
 import React from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+// import { LinearGradient } from "expo-linear-gradient";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-function Placementor({ navigation}) {
+// import { TouchableHighlight } from 'react-native-gesture-handler';
+
+function Home({navigation}) { 
   console.log(useDimensions());
   console.log(useDeviceOrientation());
   const {landscape} = useDeviceOrientation();
@@ -15,15 +17,20 @@ function Placementor({ navigation}) {
   const twitter = "https://twitter-mukul202.vercel.app/";
   const youtube = "https://www.youtube.com/@MailerDaemonIITISMDhanbad";
   const md = "https://mailer-daemon.vercel.app/";
-  var currentLink = placementor;
+  var currentLink = md;
   return (
     <SafeAreaView style={styles.container}>
-                <SafeAreaView style={{width:'100%', height:'93%'}}>
-          <WebView
-            source={{uri : currentLink}}
-          />
-        </SafeAreaView>
-        <SafeAreaView style={styles.navig}>
+      <SafeAreaView style={{width:'100%', height:'93%'}}>
+        <WebView
+          source={{uri : currentLink}}
+        />
+      </SafeAreaView>
+      {/* <LinearGradient
+          colors={["#09203f", "#537895"]}
+          start={[0.1, 0.1]}
+          style={styles.linearGradient}
+        >  */}
+      <SafeAreaView style={styles.navig}>
         <TouchableNativeFeedback onPress={() => {
           //console.log("country roads");
           navigation.navigate('Home');
@@ -65,7 +72,8 @@ function Placementor({ navigation}) {
           <Text>Others</Text></View>
         </TouchableNativeFeedback>
       </SafeAreaView>
-      </SafeAreaView>
+      {/* </LinearGradient> */}
+    </SafeAreaView>
   );
 }
 
@@ -80,11 +88,12 @@ const styles = StyleSheet.create({
   navig: {
     width: '100%',
     height:'7%',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     flexDirection: "row",
     justifyContent:"space-evenly",
     alignItems:"center",
+    backgroundColor: "gray",
   }
 });
 
-export default Placementor;
+export default Home;
