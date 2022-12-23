@@ -3,7 +3,10 @@ import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNative
 import React from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
-import { TouchableHighlight } from 'react-native-gesture-handler';
+// import { LinearGradient } from "expo-linear-gradient";
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+// import { TouchableHighlight } from 'react-native-gesture-handler';
 
 function Home({navigation}) { 
   console.log(useDimensions());
@@ -22,32 +25,54 @@ function Home({navigation}) {
           source={{uri : currentLink}}
         />
       </SafeAreaView>
+      {/* <LinearGradient
+          colors={["#09203f", "#537895"]}
+          start={[0.1, 0.1]}
+          style={styles.linearGradient}
+        >  */}
       <SafeAreaView style={styles.navig}>
         <TouchableNativeFeedback onPress={() => {
           //console.log("country roads");
           navigation.navigate('Home');
         }}>
-          <Text>ISM</Text>
+          <View style={{alignItems: 'center'}}>
+          <Icon name="home"
+          size={25}
+          color="#000" />
+          <Text>ISM</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("Placements");
           navigation.navigate('Placementor');
         }}>
-          <Text>Placementor</Text>
+          <View style={{alignItems: 'center'}}>
+          <Icon name="bar-chart"
+          size={25}
+          color="#000" />
+          <Text>Placementor</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("socials media addict");
           navigation.navigate('Ismgram');
         }}>
-          <Text>ISMGram</Text>
+          <View style={{alignItems: 'center'}}>
+          <Icon name="users"
+          size={25}
+          color="#000" />
+          <Text>ISMgram</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("DSW ka number");
           navigation.navigate('Menu');
         }}>
-          <Text>Others</Text>
+          <View style={{alignItems: 'center'}}>
+          <Icon name="plus"
+          size={25}
+          color="#000" />
+          <Text>Others</Text></View>
         </TouchableNativeFeedback>
       </SafeAreaView>
+      {/* </LinearGradient> */}
     </SafeAreaView>
   );
 }
@@ -63,7 +88,7 @@ const styles = StyleSheet.create({
   navig: {
     width: '100%',
     height:'7%',
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     flexDirection: "row",
     justifyContent:"space-evenly",
     alignItems:"center",
