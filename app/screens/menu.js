@@ -124,7 +124,16 @@ function Menu({navigation}) {
        </ScrollView>
       <ScrollView style={{width:'95%', marginTop:10}}>
       <SafeAreaView style={{width:'100%', height:'93%'}}>
-         {impContacts?.map(contact => {
+        <SafeAreaView style={styles.contactSection}>
+          <Text>Important contacts</Text>
+          <SafeAreaView style = {styles.button}>
+            <Button
+              title="See All"
+              onPress={() => navigation.navigate('Contacts')}
+            />
+          </SafeAreaView>
+        </SafeAreaView>
+          {impContacts?.map(contact => {
              return(
              <ContactCard
                  key={contact._id}
@@ -231,6 +240,14 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     borderColor: '#fff',
 
-  }
+  },
+  contactSection:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    //padding: '2rem'
+  },
+  button: {
+    width:'20%',
+  },
 });
 export default Menu;
