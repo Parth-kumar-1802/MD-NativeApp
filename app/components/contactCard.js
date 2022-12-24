@@ -6,7 +6,7 @@ import { useDimensions, useDeviceOrientation } from '@react-native-community/hoo
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import {client, urlFor} from '../../sanity';
 import { useNavigation } from "@react-navigation/native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const ContactCard = ({
     // key,
@@ -36,11 +36,11 @@ const ContactCard = ({
                 <Text style={{fontSize:18, fontWeight: '600'}}>{name}</Text>
                 <Text style={{fontSize:15, fontWeight: '500'}}>{position}</Text>
                 <View style={{flexDirection:'row'}}>
-                    <Icon name="inbox" size={12} color="#000" />
+                    <Icon name="mail" size={12} color="#000" />
                     <Text style={{paddingHorizontal:5}}>{mail}</Text>
                 </View>
                 <View style={{flexDirection:'row'}}>
-                    <Icon name="phone" size={12} color="#000" />
+                    <Icon name="call" size={12} color="#000" />
                     <Text style={{paddingHorizontal:5}}>{number}</Text>
                 </View>
             </View>

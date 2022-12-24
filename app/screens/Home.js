@@ -4,7 +4,7 @@ import React from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 // import { LinearGradient } from "expo-linear-gradient";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // import { TouchableHighlight } from 'react-native-gesture-handler';
 
@@ -46,30 +46,30 @@ function Home({navigation}) {
           navigation.navigate('Placementor');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="bar-chart"
+          <Icon name="bar-chart-outline"
           size={25}
-          color="#000" />
-          <Text>Placementor</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>Placementor</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("socials media addict");
           navigation.navigate('Ismgram');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="users"
+          <Icon name="people-outline"
           size={25}
-          color="#000" />
-          <Text>ISMgram</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>ISMgram</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("DSW ka number");
           navigation.navigate('Menu');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="plus"
+          <Icon name="list-outline"
           size={25}
-          color="#000" />
-          <Text>Others</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>Others</Text></View>
         </TouchableNativeFeedback>
       </SafeAreaView>
       {/* </LinearGradient> */}

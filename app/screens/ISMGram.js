@@ -4,7 +4,7 @@ import React from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
 import { TouchableHighlight } from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 function Ismgram({ navigation}) {
   //console.log(useDimensions());
@@ -29,40 +29,40 @@ function Ismgram({ navigation}) {
           navigation.navigate('Home');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="home"
+          <Icon name="home-outline"
           size={25}
-          color="#000" />
-          <Text>ISM</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>ISM</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("Placements");
           navigation.navigate('Placementor');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="bar-chart"
+          <Icon name="bar-chart-outline"
           size={25}
-          color="#000" />
-          <Text>Placementor</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>Placementor</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("socials media addict");
           navigation.navigate('Ismgram');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="users"
+          <Icon name="people"
           size={25}
           color="#000" />
-          <Text>ISMgram</Text></View>
+          <Text style={{color:'#000'}}>ISMgram</Text></View>
         </TouchableNativeFeedback>
         <TouchableNativeFeedback onPress={() => {
           //console.log("DSW ka number");
           navigation.navigate('Menu');
         }}>
           <View style={{alignItems: 'center'}}>
-          <Icon name="plus"
+          <Icon name="list-outline"
           size={25}
-          color="#000" />
-          <Text>Others</Text></View>
+          color="#fff" />
+          <Text style={{color:'#fff'}}>Others</Text></View>
         </TouchableNativeFeedback>
       </SafeAreaView>
     </SafeAreaView>
