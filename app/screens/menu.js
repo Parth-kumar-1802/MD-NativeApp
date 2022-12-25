@@ -6,6 +6,7 @@ import { useDimensions, useDeviceOrientation } from '@react-native-community/hoo
 import { TouchableHighlight } from 'react-native-gesture-handler';
 import client from '../../sanity';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MapView, {Marker} from 'react-native-maps';
 
 import ContactCard from '../components/contactCard';
 
@@ -19,7 +20,7 @@ function Menu({navigation}) {
         })
     }, []);
     console.log(impContacts);
-
+    let Dimensions=useDimensions();
     //console.log(useDimensions());
     //console.log(useDeviceOrientation());
     const {landscape} = useDeviceOrientation();
@@ -64,65 +65,91 @@ function Menu({navigation}) {
 {/*|||||||||||||||||||||||||||||||||||||||| END OF MAP OF IIT ISM||||||||||||||||||||||||||||||||||||||||||||| */}
 
 
-      <ScrollView style={{width:'95%', marginTop:10}}>
-      <SafeAreaView style={{width:'100%', height:'93%'}}>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="call"
-          size={22}
-          color="#000" style={{marginRight:20}}/>
-          <Text style={styles.menu_text}>Contact Us</Text></View>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="people"
-          size={22}
-          color="#000" style={{marginRight:20}}/>
-          <Text style={styles.menu_text}>People</Text></View>
-        </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="calendar"
-          size={22}
-          color="#000" style={{marginRight:20}}/>
-          <Text style={styles.menu_text}>Academic Calender</Text></View>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="earth"
-          size={22}
-          color="#000" style={{marginRight:20}}/>
-          <Text style={styles.menu_text}>Parent Portal</Text></View>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="calendar"
-          size={22}
-          color="#000" style={{marginRight:20}}/>
-          <Text style={styles.menu_text}>Holidays Calender</Text></View>
-      </TouchableNativeFeedback>
-      <TouchableNativeFeedback onPress={() => {
-          navigation.navigate('#');
-        }}>
-          <View style={styles.menu_item}>
-          <Icon name="restaurant"
-          size={22}
-          color="#000" style={{marginRight:23}}/>
-          <Text style={styles.menu_text}>Mess Menu</Text></View>
-      </TouchableNativeFeedback>
-      </SafeAreaView>
-       </ScrollView>
-      <ScrollView style={{width:'95%', marginTop:10}}>
+      <ScrollView style={{width:'95%', marginTop:10, height:"50%"}}>
+        <SafeAreaView style={{width:'100%', height:'93%'}}>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={{backgroundColor:"red",height:'20%', overflow:"hidden", margin:10, borderRadius:20, shadowColor: '#000',shadowOffset: { width: 5,height: 4,},shadowOpacity: 0.25,shadowRadius: 20, }}>
+                <MapView
+                  initialRegion={{
+                  longitude: 86.4417,
+                  latitude: 23.8080,
+                  latitudeDelta: 0.01,
+                  longitudeDelta: 0.01,
+                  }}
+                  zoomEnabled={true}
+                  style={{width: Dimensions.window.width, height: Dimensions.window.height}}
+                  mapType="mutedStandard"
+                >
+                  <Marker
+                      coordinate={{
+                      longitude: 86.4412,
+                      latitude: 23.8143,
+                      }}
+                      identifier="origin"
+                      pinColor="red"
+                  />
+                </MapView>
+              </View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="call"
+              size={22}
+              color="#000" style={{marginRight:20}}/>
+              <Text style={styles.menu_text}>Contact Us</Text></View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="people"
+              size={22}
+              color="#000" style={{marginRight:20}}/>
+              <Text style={styles.menu_text}>People</Text></View>
+            </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="calendar"
+              size={22}
+              color="#000" style={{marginRight:20}}/>
+              <Text style={styles.menu_text}>Academic Calender</Text></View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="earth"
+              size={22}
+              color="#000" style={{marginRight:20}}/>
+              <Text style={styles.menu_text}>Parent Portal</Text></View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="calendar"
+              size={22}
+              color="#000" style={{marginRight:20}}/>
+              <Text style={styles.menu_text}>Holidays Calender</Text></View>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={() => {
+              //navigation.navigate('#');
+            }}>
+              <View style={styles.menu_item}>
+              <Icon name="restaurant"
+              size={22}
+              color="#000" style={{marginRight:23}}/>
+              <Text style={styles.menu_text}>Mess Menu</Text></View>
+          </TouchableNativeFeedback>
+        </SafeAreaView>
+      </ScrollView>
+      
       <SafeAreaView style={styles.contactSection}>
           <Text style={{fontSize:18, fontWeight: '600', padding:5, color:'white'}}>Important Contacts</Text>
           <SafeAreaView style = {styles.button}>
@@ -132,8 +159,8 @@ function Menu({navigation}) {
             />
           </SafeAreaView>
         </SafeAreaView>
-      <SafeAreaView style={{width:'100%', height:'93%',flexWrap:'wrap', display:'flex',alignContent:'space-around'}}>
- 
+      <SafeAreaView style={{width:'100%', flexDirection:"row" , display:'flex',alignContent:'space-around'}}>
+      <ScrollView horizontal={true} style={{width:'10%', marginTop:10}}>
           {impContacts?.map(contact => {
              return(
              <ContactCard
@@ -148,23 +175,10 @@ function Menu({navigation}) {
                  number={contact.number}
              />)
          })}
+         </ScrollView>
        </SafeAreaView>
-    </ScrollView>
-    {/* <View style={{
-      backgroundColor: "#fff",
-      flex: 1,
-    }}>
-      <View style={{
-      backgroundColor: "#f00",
-      flex: 1,}}/>
-      <View style={{
-      backgroundColor: "#0f0",
-      flex: 1,}}/>
-      <View style={{
-      backgroundColor: "#00f",
-      flex: 1,}}>
-      </View>
-    </View> */}
+    
+    
     <SafeAreaView style={styles.navig}>
         <TouchableNativeFeedback onPress={() => {
           //console.log("country roads");
@@ -226,7 +240,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent:"space-evenly",
     alignItems:"center",
-    backgroundColor: "gray",
+    backgroundColor: "#c0c0c8",
   },
   menu_item: {
     flexDirection:'row',
@@ -247,12 +261,13 @@ const styles = StyleSheet.create({
   contactSection:{
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: 'grey',
+    backgroundColor: '#c0c0c8',
     borderRadius:5,
+    width:"100%"
     //padding: '2rem'
   },
   button: {
-    width:'20%',
+    width:'25%',
     borderWidth:3,
     borderRadius:5,
     borderColor:'transparent'

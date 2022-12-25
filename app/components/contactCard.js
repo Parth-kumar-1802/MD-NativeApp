@@ -33,8 +33,8 @@ const ContactCard = ({
 
             />
             <View style={{alignItems:'center', marginTop:-20, marginBottom: 15}}>
-                <Text style={{fontSize:18, fontWeight: '600'}}>{name}</Text>
-                <Text style={{fontSize:15, fontWeight: '500'}}>{position}</Text>
+                <Text style={{fontSize:16, fontWeight: '600'}}>{name}</Text>
+                <Text style={{fontSize:14, fontWeight: '500'}}>{position}</Text>
                 <View style={{flexDirection:'row'}}>
                     <Icon name="mail" size={12} color="#000" />
                     <Text style={{paddingHorizontal:5}}>{mail}</Text>
@@ -55,8 +55,9 @@ export default ContactCard;
 const Styles = StyleSheet.create({
     cardContainer :{
         width: 165,
-        backgroundColor: '#0ff',
-        height: 200,
+        backgroundColor: '#c0c0c8',
+        marginTop: 55,
+        height: 150,
         borderRadius: 20,
         shadowColor: '#000',
         shadowOffset: {

@@ -7,7 +7,7 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import client from '../../sanity';
 import MapView, {Marker} from 'react-native-maps';
 
-import ContactCard from '../components/contactCard';
+import DirCard from '../components/phoneDirectoryCard';
 //import Map from '../components/map';
 
 function Contacts({navigation}) {
@@ -42,7 +42,7 @@ function Contacts({navigation}) {
   return (
     <SafeAreaView style={styles.container}>
       <SafeAreaView style={styles.mainView}>
-        <SafeAreaView style={{flexDirection: 'row', justifyContent: 'space-evenly', height:'10%', alignItems: 'center'}}>
+        <SafeAreaView style={{flexDirection: 'row', justifyContent: 'space-evenly', height:'5%', alignItems: 'center'}}>
           <TouchableHighlight>
             <Text>Administration</Text>
           </TouchableHighlight>
@@ -50,7 +50,7 @@ function Contacts({navigation}) {
             <Text>Faculty</Text>
           </TouchableHighlight>
         </SafeAreaView>
-        <SafeAreaView style={{flexDirection: 'row',justifyContent: 'space-evenly', height:'10%', alignItems: 'center', width:'100%'}}>
+        <SafeAreaView style={{flexDirection: 'row',justifyContent: 'space-evenly', height:'5%', alignItems: 'center', width:'100%'}}>
           <TouchableHighlight>
             <Text>Deans</Text>
           </TouchableHighlight>
@@ -64,7 +64,7 @@ function Contacts({navigation}) {
             <Text>HOC</Text>
           </TouchableHighlight>
         </SafeAreaView>
-        
+        <ScrollView>
         {deans?.sort(function(a, b) {
                 if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                 if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
@@ -72,7 +72,7 @@ function Contacts({navigation}) {
                })
                .map(contact => {
                 return(
-                <ContactCard
+                <DirCard
                     key={contact._id}
                     id={contact._id}
                     imgUrl={
@@ -84,6 +84,7 @@ function Contacts({navigation}) {
                     number={contact.number}
                 />)
         })}
+        </ScrollView>
         
       </SafeAreaView>
       <SafeAreaView style={styles.navig}>
