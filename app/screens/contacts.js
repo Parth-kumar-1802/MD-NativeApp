@@ -37,81 +37,64 @@ function Contacts({navigation}) {
   //console.log(useDeviceOrientation());
   const Dimensions = useDimensions();
   const {landscape} = useDeviceOrientation();
-
+  let cards=deans;
   
   return (
     <SafeAreaView style={styles.container}>
       <SafeAreaView style={styles.mainView}>
         <SafeAreaView style={{flexDirection: 'row', justifyContent: 'space-evenly', height:'5%', alignItems: 'center'}}>
-          <TouchableHighlight>
+          <TouchableNativeFeedback>
             <Text>Administration</Text>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Text>Faculty</Text>
-          </TouchableHighlight>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback>
+            <Text style={{color:"#c0c0c0"}}>Faculty</Text>
+          </TouchableNativeFeedback>
         </SafeAreaView>
         <SafeAreaView style={{flexDirection: 'row',justifyContent: 'space-evenly', height:'5%', alignItems: 'center', width:'100%'}}>
-          <TouchableHighlight>
+          <TouchableNativeFeedback>
+            <SafeAreaView>
             <Text>Deans</Text>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Text>Associate Deans</Text>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Text>HOD</Text>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Text>HOC</Text>
-          </TouchableHighlight>
+            </SafeAreaView>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback onPress={()=>{
+            cards=assDeans;
+            //navigation.navigate('Menu');
+            console.log('click');
+          }}>
+            <SafeAreaView>
+            <Text style={{color:"#c0c0c0"}}>Associate Deans</Text>
+            </SafeAreaView>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback>
+            <Text style={{color:"#c0c0c0"}}>HOD</Text>
+          </TouchableNativeFeedback>
+          <TouchableNativeFeedback>
+            <Text style={{color:"#c0c0c0"}}>HOC</Text>
+          </TouchableNativeFeedback>
         </SafeAreaView>
-        <ScrollView>
-        {deans?.sort(function(a, b) {
-                if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
-                if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-                return 0;
-               })
-               .map(contact => {
-                return(
-                <DirCard
-                    key={contact._id}
-                    id={contact._id}
-                    imgUrl={
-                        contact.image
-                    }
-                    name={contact.name}
-                    position={contact.position}
-                    mail={contact.mail}
-                    number={contact.number}
-                />)
-        })}
-        </ScrollView>
-        
-      </SafeAreaView>
-      <SafeAreaView style={styles.navig}>
-        <TouchableNativeFeedback onPress={() => {
-          //console.log("country roooooaaads, take me...");
-          navigation.navigate('Home');
-        }}>
-          <Text>ISM</Text>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => {
-          //console.log("Placements");
-          navigation.navigate('Placementor');
-        }}>
-          <Text>Placementor</Text>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => {
-          //console.log("socials media addict");
-          navigation.navigate('Ismgram');
-        }}>
-          <Text>ISMGram</Text>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={() => {
-          //console.log("DSW ka number");
-          navigation.navigate('Menu');
-        }}>
-          <Text>Others</Text>
-        </TouchableNativeFeedback>
+        <SafeAreaView style={{height:"90%"}}>
+          <ScrollView style={{height:"100%"}}>
+          {cards?.sort(function(a, b) {
+                  if(a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+                  if(a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+                  return 0;
+                })
+                .map(contact => {
+                  return(
+                  <DirCard
+                      key={contact._id}
+                      id={contact._id}
+                      imgUrl={
+                          contact.image
+                      }
+                      name={contact.name}
+                      position={contact.position}
+                      mail={contact.mail}
+                      number={contact.number}
+                  />)
+          })}
+          </ScrollView>
+        </SafeAreaView>
       </SafeAreaView>
     </SafeAreaView>
   );
@@ -122,7 +105,6 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "android" ? /*StatusBar.currentHeight*/ 35 : 0,
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'space-between',
   },
   navig: {

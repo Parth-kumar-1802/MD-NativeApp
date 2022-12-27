@@ -7,11 +7,14 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import client from '../../sanity';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView, {Marker} from 'react-native-maps';
+import { useRoute } from '@react-navigation/native';
 
 import ContactCard from '../components/contactCard';
 
 function Menu({navigation}) {
     const [impContacts, setImpContacts] = useState([]);
+    let route=useRoute();
+    console.log(route.name);
 
     useEffect(()=>{
         const query = `*[_type == "contacts"]{...}`
@@ -25,52 +28,15 @@ function Menu({navigation}) {
     //console.log(useDeviceOrientation());
     const {landscape} = useDeviceOrientation();
 
-    const placementor = "https://placementor-iit-dhanbad.onrender.com/";
-    const twitter = "https://twitter-mukul202.vercel.app/";
-    const youtube = "https://www.youtube.com/@MailerDaemonIITISMDhanbad";
-    const md = "https://mailer-daemon.vercel.app/";
-    var currentLink = youtube;
+    
   return (
     <SafeAreaView style={styles.container}>
-
-{/*||||||||||||||||||||||||||||||||||||||||MAP OF IIT ISM||||||||||||||||||||||||||||||||||||||||||||| */}
-
-
-{/* <SafeAreaView style={{
-      //alignSelf: "left"
-  }}>
-  <MapView
-    initialRegion={{
-    longitude: 86.4412,
-    latitude: 23.8183,
-    latitudeDelta: 0.01,
-    longitudeDelta: 0.01,
-    }}
-    zoomEnabled={true}
-    style={{width: Dimensions.window.width, height: Dimensions.window.height}}
-    mapType="mutedStandard"
-  >
-    <Marker
-        coordinate={{
-        longitude: 86.4412,
-        latitude: 23.8143,
-        }}
-        identifier="origin"
-        pinColor="red"
-    />
-  </MapView>
-</SafeAreaView> */}
-
-
-{/*|||||||||||||||||||||||||||||||||||||||| END OF MAP OF IIT ISM||||||||||||||||||||||||||||||||||||||||||||| */}
-
-
-      <ScrollView style={{width:'95%', marginTop:10, height:"50%"}}>
-        <SafeAreaView style={{width:'100%', height:'93%'}}>
+      <ScrollView style={{width:'95%', marginTop:10,}}>
+        <SafeAreaView style={{width:'100%', height:750}}>
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
             }}>
-              <View style={{backgroundColor:"red",height:'20%', overflow:"hidden", margin:10, borderRadius:20, shadowColor: '#000',shadowOffset: { width: 5,height: 4,},shadowOpacity: 0.25,shadowRadius: 20, }}>
+              <SafeAreaView style={{backgroundColor:"red",height:'28%', overflow:"hidden", margin:10, borderRadius:20, shadowColor: '#000',shadowOffset: { width: 5,height: 4,},shadowOpacity: 0.25,shadowRadius: 20, }}>
                 <MapView
                   initialRegion={{
                   longitude: 86.4417,
@@ -80,7 +46,7 @@ function Menu({navigation}) {
                   }}
                   zoomEnabled={true}
                   style={{width: Dimensions.window.width, height: Dimensions.window.height}}
-                  mapType="mutedStandard"
+                  mapType="hybrid"
                 >
                   <Marker
                       coordinate={{
@@ -91,7 +57,7 @@ function Menu({navigation}) {
                       pinColor="red"
                   />
                 </MapView>
-              </View>
+              </SafeAreaView>
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
@@ -102,7 +68,7 @@ function Menu({navigation}) {
               color="#000" style={{marginRight:20}}/>
               <Text style={styles.menu_text}>Contact Us</Text></View>
           </TouchableNativeFeedback>
-          <TouchableNativeFeedback onPress={() => {
+          {/* <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
             }}>
               <View style={styles.menu_item}>
@@ -110,7 +76,7 @@ function Menu({navigation}) {
               size={22}
               color="#000" style={{marginRight:20}}/>
               <Text style={styles.menu_text}>People</Text></View>
-            </TouchableNativeFeedback>
+            </TouchableNativeFeedback> */}
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
             }}>
@@ -147,36 +113,37 @@ function Menu({navigation}) {
               color="#000" style={{marginRight:23}}/>
               <Text style={styles.menu_text}>Mess Menu</Text></View>
           </TouchableNativeFeedback>
+          <SafeAreaView style={styles.contactSection}>
+            <Text style={{fontSize:18, fontWeight: '600', padding:5, color:'white'}}>Important Contacts</Text>
+            <SafeAreaView style = {styles.button}>
+              <Button
+                title="See All"
+                onPress={() => navigation.navigate('Contacts')}
+              />
+            </SafeAreaView>
+          </SafeAreaView>
+          <SafeAreaView style={{width:'100%', flexDirection:"row" , display:'flex',alignContent:'space-around'}}>
+            <ScrollView horizontal={true} style={{width:'10%', marginTop:10}}>
+              {impContacts?.map(contact => {
+                return(
+                <ContactCard
+                    key={contact._id}
+                    id={contact._id}
+                    imgUrl={
+                        contact.image
+                    }
+                    name={contact.name}
+                    position={contact.position}
+                    mail={contact.mail}
+                    number={contact.number}
+                  />)
+              })}
+            </ScrollView>
+          </SafeAreaView>
         </SafeAreaView>
       </ScrollView>
       
-      <SafeAreaView style={styles.contactSection}>
-          <Text style={{fontSize:18, fontWeight: '600', padding:5, color:'white'}}>Important Contacts</Text>
-          <SafeAreaView style = {styles.button}>
-            <Button
-              title="See All"
-              onPress={() => navigation.navigate('Contacts')}
-            />
-          </SafeAreaView>
-        </SafeAreaView>
-      <SafeAreaView style={{width:'100%', flexDirection:"row" , display:'flex',alignContent:'space-around'}}>
-      <ScrollView horizontal={true} style={{width:'10%', marginTop:10}}>
-          {impContacts?.map(contact => {
-             return(
-             <ContactCard
-                 key={contact._id}
-                 id={contact._id}
-                 imgUrl={
-                     contact.image
-                 }
-                 name={contact.name}
-                 position={contact.position}
-                 mail={contact.mail}
-                 number={contact.number}
-             />)
-         })}
-         </ScrollView>
-       </SafeAreaView>
+      
     
     
     <SafeAreaView style={styles.navig}>
@@ -240,7 +207,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent:"space-evenly",
     alignItems:"center",
-    backgroundColor: "#c0c0c8",
+    backgroundColor: "#c0c0c0",
   },
   menu_item: {
     flexDirection:'row',
@@ -263,6 +230,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     backgroundColor: '#c0c0c8',
     borderRadius:5,
+    marginTop:10,
     width:"100%"
     //padding: '2rem'
   },

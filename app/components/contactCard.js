@@ -55,7 +55,7 @@ export default ContactCard;
 const Styles = StyleSheet.create({
     cardContainer :{
         width: 165,
-        backgroundColor: '#c0c0c8',
+        backgroundColor: '#efefef',
         marginTop: 55,
         height: 150,
         borderRadius: 20,
