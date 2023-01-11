@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNativeFeedback, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Button, Platform, TouchableNativeFeedback, ScrollView, Linking} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import WebView from 'react-native-webview';
 import { useDimensions, useDeviceOrientation } from '@react-native-community/hooks';
@@ -7,12 +7,12 @@ import { TouchableHighlight } from 'react-native-gesture-handler';
 import client from '../../sanity';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MapView, {Marker} from 'react-native-maps';
-import { useRoute } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native'
 
 import ContactCard from '../components/contactCard';
 
 function Menu({navigation}) {
-    const [impContacts, setImpContacts] = useState([]);
+    let [impContacts, setImpContacts] = useState([]);
     let route=useRoute();
     console.log(route.name);
 
@@ -23,6 +23,7 @@ function Menu({navigation}) {
         })
     }, []);
     console.log(impContacts);
+    impContacts = impContacts.reverse()   //temp soln
     let Dimensions=useDimensions();
     //console.log(useDimensions());
     //console.log(useDeviceOrientation());
@@ -36,7 +37,7 @@ function Menu({navigation}) {
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
             }}>
-              <SafeAreaView style={{backgroundColor:"red",height:'28%', overflow:"hidden", margin:10, borderRadius:20, shadowColor: '#000',shadowOffset: { width: 5,height: 4,},shadowOpacity: 0.25,shadowRadius: 20, }}>
+              <SafeAreaView style={styles.mapStyle}>
                 <MapView
                   initialRegion={{
                   longitude: 86.4417,
@@ -79,6 +80,7 @@ function Menu({navigation}) {
             </TouchableNativeFeedback> */}
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
+              Linking.openURL('https://drive.google.com/file/d/1-DxW2ph35d4T5mjYuilpdt3CkBe4crE4/view?usp=drivesdk');
             }}>
               <View style={styles.menu_item}>
               <Icon name="calendar"
@@ -88,6 +90,7 @@ function Menu({navigation}) {
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
+              Linking.openURL('https://parent.iitism.ac.in/index.php/parent_portal/portal0');
             }}>
               <View style={styles.menu_item}>
               <Icon name="earth"
@@ -97,6 +100,7 @@ function Menu({navigation}) {
           </TouchableNativeFeedback>
           <TouchableNativeFeedback onPress={() => {
               //navigation.navigate('#');
+              Linking.openURL('https://drive.google.com/file/d/1-Fn4nlVkS-GMztfEDXToIyxrn4g0LFtA/view?usp=drivesdk');
             }}>
               <View style={styles.menu_item}>
               <Icon name="calendar"
@@ -110,19 +114,26 @@ function Menu({navigation}) {
               <View style={styles.menu_item}>
               <Icon name="restaurant"
               size={22}
-              color="#000" style={{marginRight:23}}/>
+              color="#000" 
+              style={{marginRight:23}}/>
               <Text style={styles.menu_text}>Mess Menu</Text></View>
           </TouchableNativeFeedback>
+
+
+
           <SafeAreaView style={styles.contactSection}>
-            <Text style={{fontSize:18, fontWeight: '600', padding:5, color:'white'}}>Important Contacts</Text>
-            <SafeAreaView style = {styles.button}>
-              <Button
-                title="See All"
-                onPress={() => navigation.navigate('Contacts')}
-              />
-            </SafeAreaView>
+            <Text style={{fontSize:18, fontWeight: '600', padding:5}}>Important Contacts</Text>
+            <TouchableNativeFeedback
+              onPress={()=>{
+                navigation.navigate('Contacts');
+              }}
+            >
+              <SafeAreaView style={styles.btn}>
+                <Text style={{color:'red', marginRight:15,alignSelf:"center"}}>See All</Text>
+              </SafeAreaView>
+            </TouchableNativeFeedback>
           </SafeAreaView>
-          <SafeAreaView style={{width:'100%', flexDirection:"row" , display:'flex',alignContent:'space-around'}}>
+          <SafeAreaView style={styles.contactCard}>
             <ScrollView horizontal={true} style={{width:'10%', marginTop:10}}>
               {impContacts?.map(contact => {
                 return(
@@ -228,17 +239,30 @@ const styles = StyleSheet.create({
   contactSection:{
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#c0c0c8',
     borderRadius:5,
     marginTop:10,
     width:"100%"
     //padding: '2rem'
   },
-  button: {
-    width:'25%',
-    borderWidth:3,
-    borderRadius:5,
-    borderColor:'transparent'
+  btn:{
+    justifyContent:"center",
   },
+  mapStyle:{
+    backgroundColor:"red",
+    height:'28%',
+    overflow:"hidden",
+    margin:10,
+    borderRadius:20,
+    shadowColor: '#000',
+    shadowOffset: { width: 5,height: 4,},
+    shadowOpacity: 0.25,
+    shadowRadius: 20
+  },
+  contactCard:{
+    width:'100%',
+    flexDirection:"row",
+    display:'flex',
+    alignContent:'space-around'
+  }
 });
 export default Menu;

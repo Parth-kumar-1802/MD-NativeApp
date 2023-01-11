@@ -26,15 +26,15 @@ const ContactCard = ({
                 }}
                 style ={Styles.imageStyle}
             />
-            <View style={{ marginTop:-20, marginBottom: 15,flexDirection:"column" ,justifyContent:"center", alignContent:"center", width:"80%" }}>
-                <SafeAreaView><Text style={{fontSize:15, fontWeight: '600'}}>{name}</Text></SafeAreaView>
-                <SafeAreaView><Text style={{fontSize:12, fontWeight: '500'}}>{position}</Text></SafeAreaView>
+            <View style={{ marginTop:-20, marginBottom: 15,flexDirection:"column" ,justifyContent:"center", alignContent:"center" }}>
+                <SafeAreaView><Text style={{fontSize:15, fontWeight: '600',paddingTop:25}}>{name.toUpperCase()}</Text></SafeAreaView>
+                <SafeAreaView><Text style={{fontSize:12, fontWeight: '500', width:"99%"}}>{position}</Text></SafeAreaView>
                 <View style={{flexDirection:'row', alignContent:"center"}}>
                     <Icon name="mail" size={12} color="#000" />
                     <Text style={{paddingHorizontal:5, fontSize:10}}>{mail}</Text>
                 </View>
                 <View style={{flexDirection:'row',alignContent:"center"}}>
-                    <Icon name="call" size={12} color="#000" />
+                    {number && <Icon name="call" size={12} color="#000" />}
                     <Text style={{paddingHorizontal:5, fontSize:10}}>{number}</Text>
                 </View>
             </View>

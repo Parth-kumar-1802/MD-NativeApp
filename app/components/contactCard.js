@@ -36,11 +36,11 @@ const ContactCard = ({
                 <Text style={{fontSize:16, fontWeight: '600'}}>{name}</Text>
                 <Text style={{fontSize:14, fontWeight: '500'}}>{position}</Text>
                 <View style={{flexDirection:'row'}}>
-                    <Icon name="mail" size={12} color="#000" />
+                    <Icon name="mail" size={12} color="#000" style={{paddingTop:3}} />
                     <Text style={{paddingHorizontal:5}}>{mail}</Text>
                 </View>
-                <View style={{flexDirection:'row'}}>
-                    <Icon name="call" size={12} color="#000" />
+                <View style={{flexDirection:'row',justifyContent:"center"}}>
+                    {number && <Icon name="call" size={12} color="#000" style={{paddingTop:3}} />}
                     <Text style={{paddingHorizontal:5}}>{number}</Text>
                 </View>
             </View>
